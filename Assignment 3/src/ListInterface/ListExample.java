@@ -1,3 +1,5 @@
+package ListInterface;
+
 import java.util.*;
 
 class Customer implements Comparable<Customer>{
@@ -28,7 +30,7 @@ class Customer implements Comparable<Customer>{
 
     @Override
     public String toString() {
-        return "Customer :- \n" +
+        return "ListInterface.Customer :- \n" +
                 "   customerId = " + customerId + '\n' +
                 "   firstName = " + firstName + '\n' +
                 "   lastName = " + lastName + '\n' +
@@ -42,16 +44,16 @@ class Customer implements Comparable<Customer>{
 }
 public class ListExample {
     public static void main(String[] args) {
-        //Initializing Customer
+        //Initializing ListInterface.Customer
         List<Customer> customerList = new ArrayList<Customer>();
 
-        //Customer Objects
+        //ListInterface.Customer Objects
         Customer cs1 = new Customer(001,"Vinay","Adatiya","9898951515");
         Customer cs2 = new Customer(002,"Raj","Shah","9898978787");
         // Overrided hashcode & equals on mobile number and id still
         Customer cs3 = new Customer(003,"Raj","Shah","9898978787");
 
-        // adding Customer Object into the list (Create)
+        // adding ListInterface.Customer Object into the list (Create)
         customerList.add(cs1);
         customerList.add(cs2);
         customerList.add(cs3);
@@ -67,7 +69,7 @@ public class ListExample {
 
         //accessing customer at 0 th index (Read)
         System.out.println("-----Get-----");
-        System.out.println("Customer at index 0 :- \n"+customerList.get(0));
+        System.out.println("ListInterface.Customer at index 0 :- \n"+customerList.get(0));
 
         //again setting cs1 at last index of the list   (Update)
         customerList.set(1,cs1);
@@ -79,7 +81,7 @@ public class ListExample {
             System.out.println("List Index :- "+ iterator.nextIndex() + "\nValue :- "+iterator.next());
         }
 
-        //Implemented Comparable in Customer Class and sorted based on CustomerId
+        //Implemented Comparable in ListInterface.Customer Class and sorted based on CustomerId
         Collections.sort(customerList);
 
         System.out.println("-----Iterating List Through forEach After Sorting based on customerId-----");

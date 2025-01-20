@@ -1,5 +1,6 @@
-import java.util.Iterator;
-import java.util.TreeSet;
+package SetInterface;
+
+import java.util.*;
 
 public class TreeSetExample {
     public static void main(String[] args) {
@@ -34,5 +35,10 @@ public class TreeSetExample {
         System.out.println("Last Element :- "+treeSet.pollLast());
         System.out.println("-----Printing TreeSet after polling elements");
         System.out.println(treeSet);
+
+
+        System.out.println("-----Sort Using TreeSet-----");
+        Set<Integer> sampleTreeSet = new TreeSet<>(Arrays.asList(new Integer[]{1,2,3,7,9,8,6,4,5,10}));
+        System.out.println("Sorted TreeSet :- "+sampleTreeSet);
     }
 }

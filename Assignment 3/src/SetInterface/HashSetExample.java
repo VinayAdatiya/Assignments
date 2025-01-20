@@ -1,5 +1,6 @@
-import java.util.HashSet;
-import java.util.LinkedHashSet;
+package SetInterface;
+
+import java.util.*;
 
 public class HashSetExample {
     public static void main(String[] args) {
@@ -21,6 +22,8 @@ public class HashSetExample {
         for (String ele:lhs) {
             System.out.println(ele);
         }
+        System.out.println("-----Iterating through LinkedHashSet using stream");
+        lhs.stream().forEach(ele -> System.out.println(ele));
 
         //Adding elements in hs
         //Order is not maintained
@@ -32,11 +35,13 @@ public class HashSetExample {
         hs.add(null); //hashset allows only one null element
         hs.add(null);
 
-        //iterating through lhs
-        System.out.println("-----Iterating Through HashSet(Insertion Order not maintained)-----");
+        //iterating through hs
+        System.out.println("-----Iterating Through HashSet(Unordered) using foreach-----");
         for (String ele:hs) {
             System.out.println(ele);
         }
+        System.out.println("-----Iterating Through HashSet(Unordered) using Stream-----");
+        hs.stream().forEach(ele -> System.out.println(ele));
 
         // Hash Set Contains method
         if(hs.contains("vinay")){
@@ -61,5 +66,34 @@ public class HashSetExample {
         hs.clear();
         System.out.println("After Clearing all elements :- " + hs);
         System.out.println("After Clearing all elements in hs checking hs1:- " + hs1);
+
+        System.out.println("-----Remove Duplicates from Sentence using Set-----");
+        String sentence = "Hello Vinay Hello Raj Vikas Raj Vinay";
+        String[] arrStr = sentence.split(" ");
+        Set<String> sampleSet= new HashSet<String>();
+        for (String ele:arrStr) {
+            sampleSet.add(ele);
+        }
+        System.out.println(sampleSet);
+
+        System.out.println("-----Union, Intersection, and Difference-----");
+        Set<Integer> a = new TreeSet<>(Arrays.asList(new Integer[]{1,2,3,4,5,6}));
+        Set<Integer> b = new TreeSet<>(Arrays.asList(new Integer[]{5,6,7,8,9,10}));
+
+        //Union
+        Set<Integer> c = (TreeSet)((TreeSet<Integer>) a).clone();
+        c.addAll(b);
+        System.out.println("a UNION b :- "+c);
+
+        //Intersection
+        Set<Integer> d = (TreeSet)((TreeSet<Integer>) a).clone();
+        d.retainAll(b);
+        System.out.println("a Intersection b :- "+d);
+
+        //Difference
+        Set<Integer> e = (TreeSet)((TreeSet<Integer>) a).clone();
+        e.removeAll(b);
+        System.out.println("a Difference b :- "+e);
+
     }
 }
