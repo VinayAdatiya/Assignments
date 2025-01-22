@@ -80,6 +80,8 @@ public class HashSetExample {
         Set<Integer> a = new TreeSet<>(Arrays.asList(new Integer[]{1,2,3,4,5,6}));
         Set<Integer> b = new TreeSet<>(Arrays.asList(new Integer[]{5,6,7,8,9,10}));
 
+        a.addAll(b);
+        System.out.println("Trial:- "+a);
         //Union
         Set<Integer> c = (TreeSet)((TreeSet<Integer>) a).clone();
         c.addAll(b);
