@@ -1,0 +1,133 @@
+=> Key Characteristics of Anonymous Classes:
+1. Created without a named class
+2. Defined and instantiated in a single statement
+3. Can implement interfaces or extend classes
+4. Useful for short, one-time implementations
+5. Can access final or effectively final local variables
+
+=> Anonymous Class vs Lambda:
+1. Anonymous classes can have multiple methods
+2. Lambdas are more concise for single-method interfaces
+3. Anonymous classes allow method overrides and additional methods
+
+=> Common Use Cases:
+1. Event handling in GUI
+2. Implementing listeners
+3. Creating one-time use implementations
+4. Simplifying code by avoiding separate class definitions
+
+=> Limitations:
+1. Cannot have constructors
+2. Can only extend one class or implement one interface
+3. Can become verbose for complex implementations
+
+Example Anonymous Class:-
+// Traditional interface
+interface Greeting {
+    void sayHello();
+}
+
+public class AnonymousExample {
+    public static void main(String[] args) {
+        // Traditional way - creating a class that implements an interface
+        Greeting traditionalGreeting = new Greeting() {
+            @Override
+            public void sayHello() {
+                System.out.println("Hello from traditional anonymous class!");
+            }
+        };
+
+        // Lambda equivalent (Java 8+)
+        Greeting lambdaGreeting = () -> System.out.println("Hello from lambda!");
+
+        // Demonstrating anonymous class with abstract class
+        abstract class Animal {
+            abstract void makeSound();
+        }
+
+        // Creating an anonymous subclass of Animal
+        Animal dog = new Animal() {
+            @Override
+            void makeSound() {
+                System.out.println("Woof!");
+            }
+        };
+
+        // Demonstrating with method arguments
+        processGreeting(new Greeting() {
+            @Override
+            public void sayHello() {
+                System.out.println("Hello from method argument!");
+            }
+        });
+
+        // Call methods
+        traditionalGreeting.sayHello();
+        lambdaGreeting.sayHello();
+        dog.makeSound();
+    }
+
+    // Method accepting an interface
+    static void processGreeting(Greeting greeting) {
+        greeting.sayHello();
+    }
+}
+
+
+Lambda Expression :-
+Check LambdaFunction/LambdaFunctionTutorial.java
+
+Functional Interface :-
+- A functional interface is any interface that contains only one abstract method.
+- functional interface may contain one or more default methods or static methods.
+- Because a functional interface contains only one abstract method, you can omit the name of that method when you implement it.
+- To do this, instead of using an anonymous class expression, you use a lambda expression
+- Consequently, the JDK defines several standard functional interfaces, which you can find in the package java.util.function.
+- The primary default functional interfaces in Java are: Consumer, Predicate, Function, and Supplier; all of which are located in the java.util.function package and represent different operations based on whether they accept arguments and what type of result they return.
+- Explanation of each interface:
+  1. Consumer<T>:
+        Accepts a single argument of type T and performs an operation on it, but does not return a value.
+  2. Predicate<T>:
+        Takes a single argument of type T and returns a boolean value based on a condition.
+  3. Function<T, R>:
+        Accepts an argument of type T and returns a result of type R after performing some operation.
+  4. Supplier<T>:
+        Does not take any arguments and provides a result of type T.
+  => Key points about these interfaces:
+  1. Generic type parameter:
+        Each interface uses a generic type parameter "T" (or "R" for the return type in Function) to represent the type of the input argument(s).
+  2. Lambda expressions:
+        These functional interfaces are primarily used with lambda expressions to write concise code for operations like filtering, mapping, and consuming data.
+// Example :-
+
+interface CheckPerson(){
+    abstract void test();
+}
+
+printPersons(List<persons> , int){
+//Printing Logic
+}
+
+Instead of this :-
+printPersons(
+    roster,
+    new CheckPerson() {
+        public boolean test(Person p) {
+            return p.getGender() == Person.Sex.MALE
+                && p.getAge() >= 18
+                && p.getAge() <= 25;
+        }
+    }
+);
+
+use this :-
+printPersons(
+    roster,
+    (Person p) -> p.getGender() == Person.Sex.MALE
+        && p.getAge() >= 18
+        && p.getAge() <= 25
+);
+
+Detailed Example :-
+Check FunctionalInterfaceDemo.java
+
