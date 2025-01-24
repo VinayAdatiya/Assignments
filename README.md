@@ -1,11 +1,14 @@
 ## Assignment 1
   Store Example for Exception Handling & Overriding equals and HashCode Methods
 
-## Assignement 2
+## Assignment 2
   String Methods , String Builder and String Buffer (Comparison)
 
 ## Assignment 3
   java Collections
 
 ## Assignment 4
-  Generic Class
+  Generic Class , Comparator vs Comparable
+
+## Assignment 5
+  Anonymous Class , Lambda Expression , All imp Four Types of Functional Interface(Predicate , Consumer , Function , Supplier)
