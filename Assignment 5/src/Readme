@@ -141,3 +141,13 @@ Method Reference :-
         1. Reference to a static method.
         2. Reference to an instance method.
         3. Reference to a constructor.
+
+=> Default and Static Method in Interface :-
+=> Default Methods
+        1. Allow adding new methods to interfaces without breaking existing implementations
+        2. Provide common implementation for all implementing classes
+        3. Enable adding functionality to existing interfaces
+=> Static Methods
+        1. Provide utility functions directly in the interface
+        2. No need to create separate utility classes
+        3. Can be called without creating an instance
