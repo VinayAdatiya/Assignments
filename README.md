@@ -12,3 +12,6 @@
 
 ## Assignment 5
   Anonymous Class , Lambda Expression , All imp Four Types of Functional Interface(Predicate , Consumer , Function , Supplier)
+
+## Assignment 6
+  StreamAPI Assignment (Intermediate and Terminal Operations) & Date and Time Assignment
