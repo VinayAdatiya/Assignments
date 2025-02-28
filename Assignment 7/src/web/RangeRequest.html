@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Range Request Demo</title>
+</head>
+<body>
+<h1>Range Request Demo</h1>
+<button id="fullFileButton">Get Full File</button>
+<button id="rangeRequestButton">Get Range (Bytes 100-200)</button>
+<button id="conditionalRequestButton">Get File (Conditional)</button>
+<div id="fileContent"></div>
+
+<script>
+    const fullFileButton = document.getElementById('fullFileButton');
+    const rangeRequestButton = document.getElementById('rangeRequestButton');
+    const conditionalRequestButton = document.getElementById('conditionalRequestButton');
+    const fileContent = document.getElementById('fileContent');
+
+
+    fullFileButton.addEventListener('click', () => {
+        fetch('/RangeServlet')
+            .then(response => response.text()) // Use text() for text files
+            .then(text => {
+                fileContent.textContent = text; // Display content
+            });
+    });
+
+    rangeRequestButton.addEventListener('click', () => {
+        fetch('/RangeServlet', {
+            headers: {
+                'Range': 'bytes=100-200'
+            }
+        })
+            .then(response => {
+                if(response.status === 206)
+                {
+                    return response.text(); // Use text()
+                }
+                else if(response.status === 416)
+                {
+                    alert("Range Not Satisfiable");
+                    return null;
+                }
+            })
+            .then(text => {
+                if(text)
+                {
+                    fileContent.textContent = text; // Display content
+                }
+            });
+    });
+
+    conditionalRequestButton.addEventListener('click', () => {
+        const lastModified = new Date();
+        lastModified.setSeconds(0); // Example, set to a past time
+        const ifModifiedSince = lastModified.toUTCString(); // Correct format!
+
+        fetch('/RangeServlet', {
+            headers: {
+                'If-Modified-Since': ifModifiedSince
+            }
+        })
+            .then(response => {
+                if (response.status === 304) {
+                    alert('File not modified since ' + lastModified);
+                } else if (response.status === 200) {
+                    return response.text(); // Use text()
+                }
+            })
+            .then(text => {
+                if(text)
+                {
+                    fileContent.textContent = text; // Display content
+                }
+            });
+    });
+</script>
+</body>
+</html>

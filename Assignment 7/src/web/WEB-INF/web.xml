@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+
+    <servlet>
+        <servlet-name>LOSServlet</servlet-name>
+        <servlet-class>servlet.LOSServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LOSServlet</servlet-name>
+        <url-pattern>/LOSServlet</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>emailext</param-name>
+        <param-value>@scet.ac.in</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>TeacherServlet</servlet-name>
+        <servlet-class>servlet.TeacherServlet</servlet-class>
+        <init-param>
+            <param-name>username</param-name>
+            <param-value>SU</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherServlet</servlet-name>
+        <url-pattern>/TeacherServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>StudentServlet</servlet-name>
+        <servlet-class>servlet.StudentServlet</servlet-class>
+        <init-param>
+            <param-name>username</param-name>
+            <param-value>SCET</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StudentServlet</servlet-name>
+        <url-pattern>/StudentServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>servlet.MyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/MyServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NextServlet</servlet-name>
+        <servlet-class>servlet.NextServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NextServlet</servlet-name>
+        <url-pattern>/NextServlet</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>

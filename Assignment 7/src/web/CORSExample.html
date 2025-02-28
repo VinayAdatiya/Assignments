@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CORS Example</title>
+    <script>
+        function fetchData() {
+            fetch('http://localhost:8080/Assignment_7_Web_exploded/api/data?title=TitleFromGet&body=BodyFromGet', { // Replace with your servlet URL
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'omit' // or 'include' if you're sending cookies
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('data').innerText = data.message;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('data').innerText = "Error fetching data.";
+                });
+        }
+    </script>
+</head>
+<body>
+<button onclick="fetchData()">Fetch Data</button>
+<div id="data"></div>
+</body>
+</html>
